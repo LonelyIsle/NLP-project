@@ -6,5 +6,5 @@ def reviews(filepath = '/Users/will/Desktop/COSC 4397/reviews_segment.pkl'):
 
 if __name__ == "__main__":
     df = reviews()
-    print('Columns of the data: ', df.clomns.tolist())
+    print('Columns of the data: ', df.columns.tolist())
     print(df.head(5))

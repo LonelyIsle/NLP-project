@@ -31,20 +31,19 @@ def match_test(review, aspect1, aspect2, opinions, test_type):
     return match
 
 def run_baseline(df,queries):
-    output_dir = 'Baseline_Results'
+    output_dir = 'Boolean_Results'
     os.makedirs(output_dir, exist_ok=True)
     
     for query_name, (a1, a2, ops,) in queries.items():
         for test_num in [1,2,3]:
-            filename = f"{output_dir}/{query_name}_test.txt"
+            filename = f"{output_dir}/{query_name}_test{test_num}.txt"
             with open(filename, 'w') as f:
                 for _, row in df.iterrows():
                     if match_test(row["review_text_clean"], a1,a2,ops,test_num):
                         f.write(row["review_id"].replace("'","") + "\n")
                         
-                print(f"Boolean seatch results are save in : ", output_dir)
-                
-                
+                print(f"Boolean search results are save in : ", output_dir)
+
 if __name__ == "__main__":
     df = load_data("/Users/will/Desktop/COSC 4397/reviews_segment.pkl")
     run_baseline(df, queries)
