@@ -34,7 +34,7 @@ def match_m1(review_text, rating, aspect1, aspect2, opinions, polarity):
 
 
 def run_m1(df, queries):
-    output_dir = 'M1_Results'
+    output_dir = 'Outputs/M1_Results'
     os.makedirs(output_dir, exist_ok=True)
     
     for query_name, (a1, a2, ops, pol) in queries.items():

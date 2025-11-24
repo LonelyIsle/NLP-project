@@ -31,7 +31,7 @@ def match_test(review, aspect1, aspect2, opinions, test_type):
     return match
 
 def run_baseline(df,queries):
-    output_dir = 'Boolean_Results'
+    output_dir = 'Outputs/Boolean_Results'
     os.makedirs(output_dir, exist_ok=True)
     
     for query_name, (a1, a2, ops,) in queries.items():
