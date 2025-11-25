@@ -34,12 +34,17 @@ def match_m2(title, body, rating, aspect1, aspect2, opinions, polarity):
     if polarity == "neg" and rating > 2:
         return False
     
+    title = title.lower()
+    body = body.lower()
     opinions_set = set(opinions)
-
-    return (
-        proximity_match(title, aspect1, aspect2, opinions_set) or 
-        proximity_match(body, aspect1, aspect2, opinions_set)
-    )
+    
+    if (aspect1 in title or aspect2 in title) and any(op in title for op in opinions_set):
+        return True
+    
+    if proximity_match(body, aspect1, aspect2, opinions_set, max_distance=10):
+        return True
+    
+    return False
 
 def run_m2(df, queries):
     output_dir = "M2_Results"
